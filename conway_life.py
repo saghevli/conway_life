@@ -1,4 +1,4 @@
-# conway's game of life?
+# conway's game of life
 # rules:
 # any live cell with fewer than two live neighbors dies
 # a live cell with two or three live neighbors lives
@@ -13,6 +13,7 @@ generation = 0
 def main():
     interval = .5
     board = [[0 for i in range(BOARD_SIZE)] for i in range(BOARD_SIZE)]
+    # get input coordinates
     print "input comma separated inital state coordinates  with \"end\" on the last line"
     input = raw_input()
     while input != "end" :
@@ -40,9 +41,10 @@ def update(board):
     for i in range(BOARD_SIZE):
         for j in range(BOARD_SIZE):
             liveNeighbors = numberLiveNeighbors(board, i, j)
-            # if alive and 3 or 3 live neighbors, stay alive
+            # if alive and 2 or 3 live neighbors, stay alive
             if board[i][j] and (liveNeighbors == 2 or liveNeighbors == 3) :
                 newBoard[i][j] = 1
+            # if dead and 3 live neighbors, come to life
             if ~board[i][j] and liveNeighbors == 3 :
                 newBoard[i][j] = 1
 
